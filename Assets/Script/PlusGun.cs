@@ -33,7 +33,7 @@ public class PlusGun : MonoBehaviour
         if(currentCoolTime <= 0)
         {
             // 弾の生成
-            Instantiate(plusBullet, new Vector3(0, 0, 0), plusGunDirection_);
+            Instantiate(plusBullet, this.transform.position, plusGunDirection_);
             // クールタイムを設定
             currentCoolTime = coolTime;
         }

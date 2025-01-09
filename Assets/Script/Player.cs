@@ -11,6 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     MinusGun minusGun;
 
+    // 移動スピード
+    [SerializeField]
+    float moveSpeed = 5.0f;
+    // 回転スピード
+    [SerializeField]
+    float rotationSpeed = 100.0f;
+
     void Start()
     {
         
@@ -18,12 +25,27 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Move();
         Shot();
     }
 
     void Move()
     {
-       
+        // 前に進む
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        }
+        // 左に回転
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
+        }
+        // 右に回転
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        }
     }
 
     void Shot()
